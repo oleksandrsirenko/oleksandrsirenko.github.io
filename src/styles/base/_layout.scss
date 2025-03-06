@@ -1,0 +1,80 @@
+/* File: src/styles/base/_layout.scss */
+@use 'variables' as *;
+@use 'mixins' as *;
+
+body {
+  @include bg-color('bg');
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding: map-get($spacing, '2xl') 0;
+  
+  @include breakpoint('md') {
+    padding: map-get($spacing, '3xl') 0;
+  }
+}
+
+section {
+  margin-bottom: map-get($spacing, '3xl');
+  
+  @include breakpoint('md') {
+    margin-bottom: map-get($spacing, '4xl');
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: map-get($spacing, 'xl');
+  
+  &::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    max-width: 300px;
+    margin-left: map-get($spacing, 'md');
+    background-color: rgba(map-get($colors, 'text-light'), 0.2);
+  }
+}
+
+// Grid layouts
+.grid-2 {
+  @include grid(1, map-get($spacing, 'lg'));
+  
+  @include breakpoint('md') {
+    @include grid(2, map-get($spacing, 'lg'));
+  }
+}
+
+.grid-3 {
+  @include grid(1, map-get($spacing, 'lg'));
+  
+  @include breakpoint('md') {
+    @include grid(2, map-get($spacing, 'lg'));
+  }
+  
+  @include breakpoint('lg') {
+    @include grid(3, map-get($spacing, 'lg'));
+  }
+}
+
+.grid-4 {
+  @include grid(1, map-get($spacing, 'lg'));
+  
+  @include breakpoint('sm') {
+    @include grid(2, map-get($spacing, 'lg'));
+  }
+  
+  @include breakpoint('lg') {
+    @include grid(4, map-get($spacing, 'lg'));
+  }
+}
