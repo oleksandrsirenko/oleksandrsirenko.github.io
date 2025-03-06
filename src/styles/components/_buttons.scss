@@ -1,0 +1,106 @@
+/* File: src/styles/components/_buttons.scss */
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.btn {
+  display: inline-block;
+  padding: map-get($spacing, 'sm') map-get($spacing, 'lg');
+  font-weight: map-get($font-weights, 'medium');
+  text-align: center;
+  border: 1px solid transparent;
+  @include font-size('base');
+  border-radius: map-get($border-radius, 'md');
+  @include transition;
+  cursor: pointer;
+  
+  &:focus {
+    @include focus-ring;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  // Primary button
+  &-primary {
+    @include bg-color('secondary');
+    @include color('primary');
+    
+    &:hover {
+      @include bg-color('secondary', 0.8);
+    }
+  }
+  
+  // Secondary/Outline button
+  &-outline {
+    background-color: transparent;
+    border-color: map-get($colors, 'secondary');
+    @include color('secondary');
+    
+    &:hover {
+      @include bg-color('secondary', 0.1);
+    }
+  }
+  
+  // Text button (no background)
+  &-text {
+    background-color: transparent;
+    padding: map-get($spacing, 'xs') map-get($spacing, 'sm');
+    @include color('secondary');
+    
+    &:hover {
+      @include bg-color('secondary', 0.1);
+    }
+  }
+  
+  // Icon button
+  &-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border-radius: map-get($border-radius, 'full');
+    
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+  
+  // Button sizes
+  &-sm {
+    padding: map-get($spacing, 'xs') map-get($spacing, 'md');
+    @include font-size('sm');
+  }
+  
+  &-lg {
+    padding: map-get($spacing, 'md') map-get($spacing, 'xl');
+    @include font-size('lg');
+  }
+}
+
+// Button group
+.btn-group {
+  display: inline-flex;
+  
+  .btn {
+    border-radius: 0;
+    
+    &:first-child {
+      border-top-left-radius: map-get($border-radius, 'md');
+      border-bottom-left-radius: map-get($border-radius, 'md');
+    }
+    
+    &:last-child {
+      border-top-right-radius: map-get($border-radius, 'md');
+      border-bottom-right-radius: map-get($border-radius, 'md');
+    }
+    
+    &:not(:last-child) {
+      border-right-width: 0;
+    }
+  }
+}
