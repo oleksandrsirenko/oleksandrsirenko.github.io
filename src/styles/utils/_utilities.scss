@@ -1,0 +1,165 @@
+/* File: src/styles/utils/_utilities.scss */
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// Containers
+.container {
+  @include container;
+}
+
+.container-sm {
+  @include container(768px);
+}
+
+.container-lg {
+  @include container(1440px);
+}
+
+// Spacing
+@each $size-name, $size-value in $spacing {
+  // Margin utilities
+  .m-#{$size-name} {
+    margin: $size-value;
+  }
+  
+  .mx-#{$size-name} {
+    margin-left: $size-value;
+    margin-right: $size-value;
+  }
+  
+  .my-#{$size-name} {
+    margin-top: $size-value;
+    margin-bottom: $size-value;
+  }
+  
+  .mt-#{$size-name} {
+    margin-top: $size-value;
+  }
+  
+  .mr-#{$size-name} {
+    margin-right: $size-value;
+  }
+  
+  .mb-#{$size-name} {
+    margin-bottom: $size-value;
+  }
+  
+  .ml-#{$size-name} {
+    margin-left: $size-value;
+  }
+  
+  // Padding utilities
+  .p-#{$size-name} {
+    padding: $size-value;
+  }
+  
+  .px-#{$size-name} {
+    padding-left: $size-value;
+    padding-right: $size-value;
+  }
+  
+  .py-#{$size-name} {
+    padding-top: $size-value;
+    padding-bottom: $size-value;
+  }
+  
+  .pt-#{$size-name} {
+    padding-top: $size-value;
+  }
+  
+  .pr-#{$size-name} {
+    padding-right: $size-value;
+  }
+  
+  .pb-#{$size-name} {
+    padding-bottom: $size-value;
+  }
+  
+  .pl-#{$size-name} {
+    padding-left: $size-value;
+  }
+}
+
+// Flex and Grid utilities
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.grid {
+  display: grid;
+}
+
+// Responsive utilities
+.hidden {
+  display: none;
+}
+
+@each $breakpoint, $value in $breakpoints {
+  @include breakpoint($breakpoint) {
+    .#{$breakpoint}\:block {
+      display: block;
+    }
+    
+    .#{$breakpoint}\:flex {
+      display: flex;
+    }
+    
+    .#{$breakpoint}\:grid {
+      display: grid;
+    }
+    
+    .#{$breakpoint}\:hidden {
+      display: none;
+    }
+  }
+}
+
+// Background colors
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    @include bg-color($name);
+  }
+}
+
+// Border radius
+@each $size-name, $size-value in $border-radius {
+  .rounded-#{$size-name} {
+    border-radius: $size-value;
+  }
+}
