@@ -1,0 +1,125 @@
+/* File: src/styles/base/_typography.scss */
+@use 'variables' as *;
+@use 'mixins' as *;
+
+body {
+  font-family: map-get($fonts, 'primary');
+  @include font-size('base');
+  @include color('text');
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: map-get($spacing, 'md');
+  @include color('text-light');
+  font-weight: map-get($font-weights, 'bold');
+  line-height: 1.2;
+}
+
+h1 {
+  @include font-size('5xl');
+  letter-spacing: -0.025em;
+  
+  @include breakpoint('md') {
+    @include font-size('6xl');
+  }
+}
+
+h2 {
+  @include font-size('3xl');
+  
+  @include breakpoint('md') {
+    @include font-size('4xl');
+  }
+}
+
+h3 {
+  @include font-size('2xl');
+  
+  @include breakpoint('md') {
+    @include font-size('3xl');
+  }
+}
+
+h4 {
+  @include font-size('xl');
+  
+  @include breakpoint('md') {
+    @include font-size('2xl');
+  }
+}
+
+h5 {
+  @include font-size('lg');
+  
+  @include breakpoint('md') {
+    @include font-size('xl');
+  }
+}
+
+h6 {
+  @include font-size('base');
+  
+  @include breakpoint('md') {
+    @include font-size('lg');
+  }
+}
+
+p {
+  margin-bottom: map-get($spacing, 'md');
+  @include font-size('base');
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  @include color('secondary');
+  @include transition;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    @include focus-ring;
+  }
+}
+
+.small-text {
+  @include font-size('sm');
+}
+
+.large-text {
+  @include font-size('lg');
+}
+
+.mono {
+  font-family: map-get($fonts, 'mono');
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+// Text colors
+@each $name, $color in $colors {
+  .text-#{$name} {
+    @include color($name);
+  }
+}
+
+// Font weights
+@each $name, $weight in $font-weights {
+  .font-#{$name} {
+    font-weight: $weight;
+  }
+}

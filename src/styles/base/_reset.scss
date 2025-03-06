@@ -1,0 +1,81 @@
+/* File: src/styles/base/_reset.scss */
+
+// A modern CSS reset
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  // Use a more-intuitive box-sizing model
+  html {
+    box-sizing: border-box;
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  
+  // Allow percentage-based heights
+  html, body {
+    height: 100%;
+  }
+  
+  // Improve text rendering
+  body {
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  // Create a root stacking context
+  #root, #__next {
+    isolation: isolate;
+  }
+  
+  // Improve media defaults
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  // Remove built-in form typography styles
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  // Avoid text overflows
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  // Remove list styles
+  ul, ol {
+    list-style: none;
+  }
+  
+  // Anchor elements
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  // Make images easier to work with
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  // Inherit fonts for form controls
+  button, input, select, textarea {
+    font: inherit;
+  }
+  
+  // Remove all animations and transitions for people that prefer not to see them
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
