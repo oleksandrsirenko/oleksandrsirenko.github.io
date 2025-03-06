@@ -1,0 +1,31 @@
+{
+    "name": "oleksandrsirenko.github.io",
+    "private": true,
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "sass": "^1.85.1",
+        "vite": "^6.2.0"
+    },
+    "dependencies": {
+        "gsap": "^3.12.7"
+    },
+    "description": "This repository contains the source code for my professional portfolio website, showcasing my work as a Software Engineer and Technical Writer.",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/oleksandrsirenko/oleksandrsirenko.github.io.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/oleksandrsirenko/oleksandrsirenko.github.io/issues"
+    },
+    "homepage": "https://github.com/oleksandrsirenko/oleksandrsirenko.github.io#readme"
+}
