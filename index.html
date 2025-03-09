@@ -16,7 +16,130 @@
     </header>
     
     <main>
-        <!-- Main content will go here -->
+        <section class="container my-xl">
+            <h2 class="section-title mb-lg">Portfolio Showcase</h2>
+            
+            <div class="card-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card__image">
+                        <img class="lazy-image" data-src="/api/placeholder/600/400" alt="Project preview">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">Project Title</h3>
+                        <p class="card__description">A brief description of the project showcasing main features and technologies used.</p>
+                    </div>
+                    <div class="card__footer">
+                        <small class="text-secondary">React • TypeScript • Node.js</small>
+                        <div class="card__actions">
+                            <a href="#" class="btn btn-sm btn-outline">View</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="card card--featured">
+                    <div class="card__image">
+                        <img class="lazy-image" data-src="/api/placeholder/600/400" alt="Project preview">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">Featured Project</h3>
+                        <p class="card__description">This featured project demonstrates advanced techniques and comprehensive solutions.</p>
+                    </div>
+                    <div class="card__footer">
+                        <small class="text-secondary">Vue • Tailwind • Firebase</small>
+                        <div class="card__actions">
+                            <a href="#" class="btn btn-sm btn-outline">View</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card__image">
+                        <img class="lazy-image" data-src="/api/placeholder/600/400" alt="Project preview">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">Another Project</h3>
+                        <p class="card__description">Exploring the capabilities of modern web technologies with this innovative project.</p>
+                    </div>
+                    <div class="card__footer">
+                        <small class="text-secondary">Angular • SCSS • GraphQL</small>
+                        <div class="card__actions">
+                            <a href="#" class="btn btn-sm btn-outline">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Responsive Text Demo -->
+            <div class="mt-2xl mb-xl">
+                <h2 class="section-title mb-lg">Responsive Typography</h2>
+                <div class="bg-bg-light p-lg rounded-lg">
+                    <h1>Heading 1: Fluid Typography</h1>
+                    <h2>Heading 2: Resizes Based on Viewport</h2>
+                    <h3>Heading 3: Consistent Readability</h3>
+                    <h4>Heading 4: Across Different Devices</h4>
+                    <p class="mt-md">Regular paragraph text maintains optimal reading length across screen sizes.</p>
+                    <p class="text-lg mt-sm">Larger text for emphasis and improved readability.</p>
+                    <p class="text-sm mt-sm mono">Monospace text for code or technical content.</p>
+                    
+                    <div class="flex flex-col md:flex-row justify-between mt-lg">
+                        <div class="mb-md md:mb-none">
+                            <p class="md:text-right">Right-aligned on medium screens and up</p>
+                        </div>
+                        <div>
+                            <p class="text-center">Always centered text</p>
+                        </div>
+                        <div class="mt-md md:mt-none">
+                            <p>Normal aligned text</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Responsive Grid Demo -->
+            <div class="mb-2xl">
+                <h2 class="section-title mb-lg">Responsive Grid System</h2>
+                <div class="grid">
+                    <div class="col-12 md:col-6 lg:col-4 p-md">
+                        <div class="bg-bg-light p-lg rounded-lg text-center">
+                            <p>Full width on mobile, half on tablet, third on desktop</p>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-4 p-md">
+                        <div class="bg-bg-light p-lg rounded-lg text-center">
+                            <p>Full width on mobile, half on tablet, third on desktop</p>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-4 p-md">
+                        <div class="bg-bg-light p-lg rounded-lg text-center">
+                            <p>Full width on mobile, half on tablet, third on desktop</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Responsive Media Demo -->
+            <div class="mb-2xl">
+                <h2 class="section-title mb-lg">Responsive Media</h2>
+                <div class="grid">
+                    <div class="col-12 md:col-6 p-md">
+                        <div class="aspect-ratio ratio-16x9">
+                            <img class="lazy-image" data-src="/api/placeholder/1200/675" alt="Responsive image with 16:9 aspect ratio">
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-6 p-md">
+                        <div class="embed-responsive embed-responsive-16x9">
+                            <!-- Placeholder for video embed -->
+                            <div style="background-color: rgba(100, 255, 218, 0.1); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <p class="text-center">Video Embed Placeholder</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     
     <footer>
