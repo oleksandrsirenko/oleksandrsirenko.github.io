@@ -11,12 +11,66 @@
     <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg">
 </head>
 <body>
-    <header>
-        <!-- Navigation will go here -->
+    <header class="header">
+        <div class="container header__container">
+            <!-- Logo -->
+            <a href="#hero" class="header__logo" aria-label="Oleksandr Sirenko">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#64ffda" stroke-width="1.5">
+                  <path d="M16 2 L16 30 M2 16 L30 16 M4 8 L28 24 M4 24 L28 8 M8 4 L24 28 M24 4 L8 28" />
+                  <circle cx="16" cy="16" r="12" />
+                  <circle cx="16" cy="16" r="6" fill="#64ffda" fill-opacity="0.2" />
+                  <text x="16" y="19" font-family="monospace" font-size="10" fill="#64ffda" text-anchor="middle">OS</text>
+                </svg>
+                <span class="md:hidden">OS</span>
+                <span class="hidden md:inline">Oleksandr</span>
+            </a>
+            
+            <!-- Mobile Navigation Toggle -->
+            <button class="header__nav-toggle" aria-label="Toggle Navigation" aria-expanded="false">
+                <span class="header__hamburger"></span>
+            </button>
+            
+            <!-- Navigation -->
+            <nav class="header__nav" aria-label="Main Navigation">
+                <ol class="header__nav-list">
+                    <li class="header__nav-item">
+                        <a href="#about" class="header__nav-link">About</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#experience" class="header__nav-link">Experience</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#work" class="header__nav-link">Work</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#projects" class="header__nav-link">Projects</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#contact" class="header__nav-link">Contact</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="/resume.pdf" class="btn btn-outline header__resume-btn" target="_blank" rel="noopener noreferrer">Resume</a>
+                    </li>
+                </ol>
+            </nav>
+            
+            <!-- Mobile Navigation Overlay -->
+            <div class="header__overlay"></div>
+        </div>
     </header>
     
     <main>
-        <section class="container my-xl">
+        <!-- Hero section will be added in the next task -->
+        <section id="hero" class="container"></section>
+        
+        <!-- About section will be implemented in future tasks -->
+        <section id="about" class="container"></section>
+        
+        <!-- Experience section will be implemented in future tasks -->
+        <section id="experience" class="container"></section>
+        
+        <!-- Work section for portfolio items -->
+        <section id="work" class="container my-xl">
             <h2 class="section-title mb-lg">Portfolio Showcase</h2>
             
             <div class="card-grid">
@@ -139,6 +193,18 @@
                     </div>
                 </div>
             </div>
+        </section>
+        
+        <!-- Projects section for smaller personal projects -->
+        <section id="projects" class="container my-xl">
+            <h2 class="section-title mb-lg">Other Projects</h2>
+            <!-- Projects content will be implemented in future tasks -->
+        </section>
+        
+        <!-- Contact section -->
+        <section id="contact" class="container my-xl">
+            <h2 class="section-title mb-lg">Get In Touch</h2>
+            <!-- Contact form will be implemented in future tasks -->
         </section>
     </main>
     
