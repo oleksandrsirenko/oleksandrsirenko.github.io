@@ -3,15 +3,22 @@
 // Base styles
 @use 'base/reset';
 @use 'base/variables';
+@use 'base/functions';
 @use 'base/mixins';
 @use 'base/typography';
 @use 'base/layout';
+@use 'base/responsive';
+@use 'base/grid';
 
 // Utility classes
 @use 'utils/utilities';
+@use 'utils/responsive-spacing';
+@use 'utils/responsive-typography';
+@use 'utils/responsive-media';
 
 // Component styles
 @use 'components/buttons';
+@use 'components/responsive-demo';
 // Additional component styles will be added in future tasks
 
 // Page-specific styles will be added in future tasks

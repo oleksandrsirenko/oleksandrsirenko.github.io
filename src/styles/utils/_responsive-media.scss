@@ -1,0 +1,185 @@
+/* File: src/styles/utils/_responsive-media.scss */
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// Image aspect ratio container
+.aspect-ratio {
+  position: relative;
+  width: 100%;
+  
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; // Default 16:9 aspect ratio
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  // Common aspect ratios
+  &.ratio-1x1::before {
+    padding-top: 100%; // 1:1 (square)
+  }
+  
+  &.ratio-4x3::before {
+    padding-top: 75%; // 4:3
+  }
+  
+  &.ratio-16x9::before {
+    padding-top: 56.25%; // 16:9
+  }
+  
+  &.ratio-21x9::before {
+    padding-top: 42.85%; // 21:9
+  }
+}
+
+// Responsive image utilities
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.img-cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.img-contain {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+// Responsive media embeds (iframes, videos)
+.embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  
+  &::before {
+    display: block;
+    content: "";
+  }
+  
+  iframe,
+  embed,
+  object,
+  video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  
+  // Common aspect ratios for embeds
+  &.embed-responsive-21x9::before {
+    padding-top: 42.85%;
+  }
+  
+  &.embed-responsive-16x9::before {
+    padding-top: 56.25%;
+  }
+  
+  &.embed-responsive-4x3::before {
+    padding-top: 75%;
+  }
+  
+  &.embed-responsive-1x1::before {
+    padding-top: 100%;
+  }
+}
+
+// Background image utilities
+.bg-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-contain {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// Responsive background positions
+@each $breakpoint, $value in $breakpoints {
+  @include breakpoint($breakpoint) {
+    .#{$breakpoint}\:bg-left {
+      background-position: left center !important;
+    }
+    
+    .#{$breakpoint}\:bg-center {
+      background-position: center center !important;
+    }
+    
+    .#{$breakpoint}\:bg-right {
+      background-position: right center !important;
+    }
+    
+    .#{$breakpoint}\:bg-top {
+      background-position: center top !important;
+    }
+    
+    .#{$breakpoint}\:bg-bottom {
+      background-position: center bottom !important;
+    }
+  }
+}
+
+// Picture element helper class
+.picture-responsive {
+  display: block;
+  width: 100%;
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Lazy loading image placeholder
+.lazy-placeholder {
+  background-color: rgba(map-get($colors, 'text'), 0.1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    animation: loading-placeholder 1.5s infinite;
+  }
+}
+
+@keyframes loading-placeholder {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 100%;
+  }
+}

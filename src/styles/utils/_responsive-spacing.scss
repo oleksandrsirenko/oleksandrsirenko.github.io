@@ -1,0 +1,169 @@
+/* File: src/styles/utils/_responsive-spacing.scss */
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// Generate responsive spacing utilities for all breakpoints
+@each $breakpoint, $breakpoint-value in $breakpoints {
+  @include breakpoint($breakpoint) {
+    // Responsive margins
+    @each $space-name, $space-value in $spacing {
+      .#{$breakpoint}\:m-#{$space-name} {
+        margin: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:mx-#{$space-name} {
+        margin-left: $space-value !important;
+        margin-right: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:my-#{$space-name} {
+        margin-top: $space-value !important;
+        margin-bottom: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:mt-#{$space-name} {
+        margin-top: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:mr-#{$space-name} {
+        margin-right: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:mb-#{$space-name} {
+        margin-bottom: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:ml-#{$space-name} {
+        margin-left: $space-value !important;
+      }
+      
+      // Responsive paddings
+      .#{$breakpoint}\:p-#{$space-name} {
+        padding: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:px-#{$space-name} {
+        padding-left: $space-value !important;
+        padding-right: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:py-#{$space-name} {
+        padding-top: $space-value !important;
+        padding-bottom: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:pt-#{$space-name} {
+        padding-top: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:pr-#{$space-name} {
+        padding-right: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:pb-#{$space-name} {
+        padding-bottom: $space-value !important;
+      }
+      
+      .#{$breakpoint}\:pl-#{$space-name} {
+        padding-left: $space-value !important;
+      }
+    }
+    
+    // Responsive text alignment
+    .#{$breakpoint}\:text-left {
+      text-align: left !important;
+    }
+    
+    .#{$breakpoint}\:text-center {
+      text-align: center !important;
+    }
+    
+    .#{$breakpoint}\:text-right {
+      text-align: right !important;
+    }
+    
+    // Responsive display properties
+    .#{$breakpoint}\:block {
+      display: block !important;
+    }
+    
+    .#{$breakpoint}\:inline-block {
+      display: inline-block !important;
+    }
+    
+    .#{$breakpoint}\:inline {
+      display: inline !important;
+    }
+    
+    .#{$breakpoint}\:flex {
+      display: flex !important;
+    }
+    
+    .#{$breakpoint}\:grid {
+      display: grid !important;
+    }
+    
+    .#{$breakpoint}\:hidden {
+      display: none !important;
+    }
+    
+    // Responsive flex directions
+    .#{$breakpoint}\:flex-row {
+      flex-direction: row !important;
+    }
+    
+    .#{$breakpoint}\:flex-column {
+      flex-direction: column !important;
+    }
+    
+    .#{$breakpoint}\:flex-row-reverse {
+      flex-direction: row-reverse !important;
+    }
+    
+    .#{$breakpoint}\:flex-column-reverse {
+      flex-direction: column-reverse !important;
+    }
+    
+    // Responsive justification
+    .#{$breakpoint}\:justify-start {
+      justify-content: flex-start !important;
+    }
+    
+    .#{$breakpoint}\:justify-end {
+      justify-content: flex-end !important;
+    }
+    
+    .#{$breakpoint}\:justify-center {
+      justify-content: center !important;
+    }
+    
+    .#{$breakpoint}\:justify-between {
+      justify-content: space-between !important;
+    }
+    
+    .#{$breakpoint}\:justify-around {
+      justify-content: space-around !important;
+    }
+    
+    // Responsive alignment
+    .#{$breakpoint}\:items-start {
+      align-items: flex-start !important;
+    }
+    
+    .#{$breakpoint}\:items-end {
+      align-items: flex-end !important;
+    }
+    
+    .#{$breakpoint}\:items-center {
+      align-items: center !important;
+    }
+    
+    .#{$breakpoint}\:items-baseline {
+      align-items: baseline !important;
+    }
+    
+    .#{$breakpoint}\:items-stretch {
+      align-items: stretch !important;
+    }
+  }
+}
