@@ -100,7 +100,7 @@
 // Visibility utilities
 @each $breakpoint, $value in $breakpoints {
   .hide-for-#{$breakpoint}-down {
-    @media (max-width: $value - 1px) {
+    @media (max-width: ($value - 1px)) {
       display: none !important;
     }
   }
@@ -114,7 +114,7 @@
   .show-for-#{$breakpoint}-only {
     display: none !important;
     
-    @media (min-width: $value) and (max-width: map-get-next($breakpoints, $breakpoint) - 1px) {
+    @media (min-width: $value) and (max-width: (map-get-next($breakpoints, $breakpoint) - 1px)) {
       display: block !important;
     }
   }
