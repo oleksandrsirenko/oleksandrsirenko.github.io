@@ -1,0 +1,142 @@
+/* File: src/styles/base/_grid.scss */
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Responsive grid system
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: map-get($spacing, 'md');
+  
+  @each $breakpoint, $value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      &.#{$breakpoint}-gap-none { gap: 0; }
+      &.#{$breakpoint}-gap-xs { gap: map-get($spacing, 'xs'); }
+      &.#{$breakpoint}-gap-sm { gap: map-get($spacing, 'sm'); }
+      &.#{$breakpoint}-gap-md { gap: map-get($spacing, 'md'); }
+      &.#{$breakpoint}-gap-lg { gap: map-get($spacing, 'lg'); }
+      &.#{$breakpoint}-gap-xl { gap: map-get($spacing, 'xl'); }
+    }
+  }
+}
+
+// Column spans for different breakpoints
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    grid-column: span $i;
+  }
+  
+  @each $breakpoint, $value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      .#{$breakpoint}\:col-#{$i} {
+        grid-column: span $i;
+      }
+    }
+  }
+}
+
+// Auto layouts
+.col-auto {
+  grid-column: auto;
+}
+
+.col-full {
+  grid-column: 1 / -1;
+}
+
+@each $breakpoint, $value in $breakpoints {
+  @include breakpoint($breakpoint) {
+    .#{$breakpoint}\:col-auto {
+      grid-column: auto;
+    }
+    
+    .#{$breakpoint}\:col-full {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+// Commonly used flexbox grid
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -#{map-get($spacing, 'sm')};
+  
+  > * {
+    padding: map-get($spacing, 'sm');
+  }
+  
+  &.no-gutters {
+    margin: 0;
+    
+    > * {
+      padding: 0;
+    }
+  }
+}
+
+// Responsive flex columns
+.flex-col {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@each $breakpoint, $value in $breakpoints {
+  @include breakpoint($breakpoint) {
+    @for $i from 1 through 12 {
+      .#{$breakpoint}\:flex-col-#{$i} {
+        flex: 0 0 percentage($i / 12);
+        max-width: percentage($i / 12);
+      }
+    }
+  }
+}
+
+// Auto and equal width flex columns
+.flex-col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+}
+
+.flex-col-equal {
+  flex: 1 0 0%;
+  max-width: 100%;
+}
+
+@each $breakpoint, $value in $breakpoints {
+  @include breakpoint($breakpoint) {
+    .#{$breakpoint}\:flex-col-auto {
+      flex: 0 0 auto;
+      width: auto;
+      max-width: 100%;
+    }
+    
+    .#{$breakpoint}\:flex-col-equal {
+      flex: 1 0 0%;
+      max-width: 100%;
+    }
+  }
+}
+
+// Order utilities
+@for $i from -1 through 12 {
+  .order-#{$i} {
+    order: $i;
+  }
+  
+  @each $breakpoint, $value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      .#{$breakpoint}\:order-#{$i} {
+        order: $i;
+      }
+    }
+  }
+}
+
+// Nested grid mixin for component-specific grids
+@mixin nested-grid($columns: 12, $gap: map-get($spacing, 'md')) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
