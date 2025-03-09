@@ -9,8 +9,8 @@
 
 ## Phase 2: Core UI Implementation
 
-- [ ] 2.1 Develop the header and navigation component
-- [ ] 2.2 Create hero section
+- [x] 2.1 Develop the header and navigation component
+- [x] 2.2 Create hero section
 - [ ] 2.3 Implement about section
 - [ ] 2.4 Build expertise/skills section
 - [ ] 2.5 Develop projects showcase
