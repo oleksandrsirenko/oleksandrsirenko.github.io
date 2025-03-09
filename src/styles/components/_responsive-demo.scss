@@ -1,0 +1,125 @@
+/* File: src/styles/components/_responsive-demo.scss */
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// Responsive card component
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(map-get($colors, 'bg-light'), 0.5);
+  border-radius: map-get($border-radius, 'lg');
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  @include shadow('md');
+  
+  &:hover {
+    transform: translateY(-5px);
+    @include shadow('lg');
+  }
+  
+  // Card image container with aspect ratio
+  &__image {
+    position: relative;
+    padding-bottom: 56.25%; // 16:9 aspect ratio
+    
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  // Card content
+  &__content {
+    padding: map-get($spacing, 'lg');
+    flex: 1;
+    
+    @include breakpoint('md') {
+      padding: map-get($spacing, 'xl');
+    }
+  }
+  
+  // Card title
+  &__title {
+    @include font-size('xl');
+    font-weight: map-get($font-weights, 'bold');
+    margin-bottom: map-get($spacing, 'sm');
+    @include color('text-light');
+    
+    @include breakpoint('md') {
+      @include font-size('2xl');
+    }
+  }
+  
+  // Card description
+  &__description {
+    @include font-size('base');
+    margin-bottom: map-get($spacing, 'md');
+  }
+  
+  // Card footer
+  &__footer {
+    padding: map-get($spacing, 'md') map-get($spacing, 'lg');
+    border-top: 1px solid rgba(map-get($colors, 'text'), 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    @include breakpoint('md') {
+      padding: map-get($spacing, 'md') map-get($spacing, 'xl');
+    }
+  }
+  
+  // Card actions
+  &__actions {
+    display: flex;
+    gap: map-get($spacing, 'sm');
+  }
+  
+  // Card variants
+  &--horizontal {
+    @include breakpoint('md') {
+      flex-direction: row;
+      
+      .card__image {
+        width: 40%;
+        padding-bottom: 0;
+      }
+      
+      .card__content {
+        width: 60%;
+      }
+    }
+  }
+  
+  &--small {
+    max-width: 320px;
+  }
+  
+  &--featured {
+    border: 1px solid rgba(map-get($colors, 'secondary'), 0.3);
+  }
+}
+
+// Responsive grid container for cards
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: map-get($spacing, 'lg');
+  
+  @include breakpoint('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include breakpoint('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @include breakpoint('xl') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
