@@ -1,0 +1,132 @@
+/* File: src/styles/utils/_responsive-typography.scss */
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// Responsive font size utilities
+@each $breakpoint, $breakpoint-value in $breakpoints {
+  @include breakpoint($breakpoint) {
+    @each $size-name, $size-value in $font-sizes {
+      .#{$breakpoint}\:text-#{$size-name} {
+        font-size: $size-value !important;
+      }
+    }
+    
+    // Responsive font weights
+    @each $weight-name, $weight-value in $font-weights {
+      .#{$breakpoint}\:font-#{$weight-name} {
+        font-weight: $weight-value !important;
+      }
+    }
+    
+    // Responsive text alignment
+    .#{$breakpoint}\:text-left {
+      text-align: left !important;
+    }
+    
+    .#{$breakpoint}\:text-center {
+      text-align: center !important;
+    }
+    
+    .#{$breakpoint}\:text-right {
+      text-align: right !important;
+    }
+    
+    .#{$breakpoint}\:text-justify {
+      text-align: justify !important;
+    }
+    
+    // Responsive text transforms
+    .#{$breakpoint}\:text-lowercase {
+      text-transform: lowercase !important;
+    }
+    
+    .#{$breakpoint}\:text-uppercase {
+      text-transform: uppercase !important;
+    }
+    
+    .#{$breakpoint}\:text-capitalize {
+      text-transform: capitalize !important;
+    }
+    
+    // Responsive text wrapping
+    .#{$breakpoint}\:text-wrap {
+      white-space: normal !important;
+    }
+    
+    .#{$breakpoint}\:text-nowrap {
+      white-space: nowrap !important;
+    }
+    
+    // Responsive line heights
+    .#{$breakpoint}\:leading-none {
+      line-height: 1 !important;
+    }
+    
+    .#{$breakpoint}\:leading-tight {
+      line-height: 1.25 !important;
+    }
+    
+    .#{$breakpoint}\:leading-snug {
+      line-height: 1.375 !important;
+    }
+    
+    .#{$breakpoint}\:leading-normal {
+      line-height: 1.5 !important;
+    }
+    
+    .#{$breakpoint}\:leading-relaxed {
+      line-height: 1.625 !important;
+    }
+    
+    .#{$breakpoint}\:leading-loose {
+      line-height: 2 !important;
+    }
+  }
+}
+
+// Fluid typography for headings
+h1 {
+  @include fluid-type(320px, 1200px, map-get($font-sizes, '3xl'), map-get($font-sizes, '6xl'));
+}
+
+h2 {
+  @include fluid-type(320px, 1200px, map-get($font-sizes, '2xl'), map-get($font-sizes, '4xl'));
+}
+
+h3 {
+  @include fluid-type(320px, 1200px, map-get($font-sizes, 'xl'), map-get($font-sizes, '3xl'));
+}
+
+h4 {
+  @include fluid-type(320px, 1200px, map-get($font-sizes, 'lg'), map-get($font-sizes, '2xl'));
+}
+
+h5 {
+  @include fluid-type(320px, 1200px, map-get($font-sizes, 'base'), map-get($font-sizes, 'xl'));
+}
+
+h6 {
+  @include fluid-type(320px, 1200px, map-get($font-sizes, 'sm'), map-get($font-sizes, 'lg'));
+}
+
+// Line clamp utilities for text truncation
+@for $i from 1 through 5 {
+  .line-clamp-#{$i} {
+    display: -webkit-box;
+    -webkit-line-clamp: $i;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Helper classes for text overflow
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-break {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
