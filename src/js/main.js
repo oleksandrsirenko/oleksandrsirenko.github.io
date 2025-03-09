@@ -1,14 +1,21 @@
 // File: src/js/main.js
 import '../styles/main.scss'; // Import main styles
+import { setupLazyLoading } from './utils/responsive';
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Portfolio website initialized with Vite');
   
-  // Initialize components (to be added in future tasks)
+  // Initialize components
   initializeApp();
 });
 
 function initializeApp() {
-  // This function will be used to initialize all components
-  console.log('App initialization logic will be added here');
+  // Initialize responsive features
+  setupLazyLoading();
+  
+  // Setup responsive navigation (will be initialized once we create the nav component)
+  // setupResponsiveNavigation('.site-nav', '.nav-toggle');
+  
+  // Additional initialization logic will be added in future tasks
+  console.log('Responsive framework initialized');
 }
