@@ -7,6 +7,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-top: 70px; // Account for fixed header
+  
+  @include breakpoint('md') {
+    padding-top: 80px;
+  }
 }
 
 main {
