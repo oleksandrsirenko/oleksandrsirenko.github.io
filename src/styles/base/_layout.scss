@@ -1,6 +1,7 @@
 /* File: src/styles/base/_layout.scss */
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'sass:map';
 
 body {
   @include bg-color('bg');
@@ -16,18 +17,18 @@ body {
 
 main {
   flex: 1;
-  padding: map-get($spacing, '2xl') 0;
+  padding: map.get($spacing, '2xl') 0;
   
   @include breakpoint('md') {
-    padding: map-get($spacing, '3xl') 0;
+    padding: map.get($spacing, '3xl') 0;
   }
 }
 
 section {
-  margin-bottom: map-get($spacing, '3xl');
+  margin-bottom: map.get($spacing, '3xl');
   
   @include breakpoint('md') {
-    margin-bottom: map-get($spacing, '4xl');
+    margin-bottom: map.get($spacing, '4xl');
   }
   
   &:last-child {
@@ -38,7 +39,7 @@ section {
 .section-title {
   display: flex;
   align-items: center;
-  margin-bottom: map-get($spacing, 'xl');
+  margin-bottom: map.get($spacing, 'xl');
   
   &::after {
     content: "";
@@ -46,40 +47,40 @@ section {
     height: 1px;
     width: 100%;
     max-width: 300px;
-    margin-left: map-get($spacing, 'md');
-    background-color: rgba(map-get($colors, 'text-light'), 0.2);
+    margin-left: map.get($spacing, 'md');
+    background-color: rgba(map.get($colors, 'text-light'), 0.2);
   }
 }
 
 // Grid layouts
 .grid-2 {
-  @include grid(1, map-get($spacing, 'lg'));
+  @include grid(1, map.get($spacing, 'lg'));
   
   @include breakpoint('md') {
-    @include grid(2, map-get($spacing, 'lg'));
+    @include grid(2, map.get($spacing, 'lg'));
   }
 }
 
 .grid-3 {
-  @include grid(1, map-get($spacing, 'lg'));
+  @include grid(1, map.get($spacing, 'lg'));
   
   @include breakpoint('md') {
-    @include grid(2, map-get($spacing, 'lg'));
+    @include grid(2, map.get($spacing, 'lg'));
   }
   
   @include breakpoint('lg') {
-    @include grid(3, map-get($spacing, 'lg'));
+    @include grid(3, map.get($spacing, 'lg'));
   }
 }
 
 .grid-4 {
-  @include grid(1, map-get($spacing, 'lg'));
+  @include grid(1, map.get($spacing, 'lg'));
   
   @include breakpoint('sm') {
-    @include grid(2, map-get($spacing, 'lg'));
+    @include grid(2, map.get($spacing, 'lg'));
   }
   
   @include breakpoint('lg') {
-    @include grid(4, map-get($spacing, 'lg'));
+    @include grid(4, map.get($spacing, 'lg'));
   }
 }

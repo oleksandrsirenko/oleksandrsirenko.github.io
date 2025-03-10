@@ -1,15 +1,14 @@
 /* File: src/styles/base/_responsive.scss */
 @use 'variables' as *;
 @use 'mixins' as *;
-
-// Import the strip-unit function from _functions.scss before using it
-@use 'functions' as *;
+@use 'sass:map';
+@use 'sass:math';
 
 // Container width constraints for different viewport sizes
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 0 map-get($spacing, 'lg');
+  padding: 0 map.get($spacing, 'lg');
   
   @include breakpoint('sm') {
     max-width: 540px;
@@ -27,7 +26,7 @@
     max-width: 1140px;
   }
   
-  @include breakpoint('2xl') {
+  @include breakpoint('xxl') {
     max-width: 1320px;
   }
 }
@@ -110,28 +109,9 @@
       display: none !important;
     }
   }
-  
-  .show-for-#{$breakpoint}-only {
-    display: none !important;
-    
-    @media (min-width: $value) and (max-width: (map-get-next($breakpoints, $breakpoint) - 1px)) {
-      display: block !important;
-    }
-  }
 }
 
 // Helper functions
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
-}
-
-@function map-get-next($map, $key) {
-  $keys: map-keys($map);
-  $n: index($keys, $key);
-  
-  @if $n < length($keys) {
-    @return map-get($map, nth($keys, $n + 1));
-  }
-  
-  @return null;
 }

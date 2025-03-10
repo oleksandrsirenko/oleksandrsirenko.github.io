@@ -1,82 +1,72 @@
 /* File: src/styles/base/_functions.scss */
+@use 'sass:map';
+@use 'variables' as *;
 
 // Remove the unit from a value
 @function strip-unit($value) {
-    @if type-of($value) == 'number' and not unitless($value) {
-      @return $value / ($value * 0 + 1);
-    }
-    @return $value;
+  @if type-of($value) == 'number' and not unitless($value) {
+    @return $value / ($value * 0 + 1);
   }
+  @return $value;
+}
+
+// Calculate rem from px
+@function rem($pixels, $context: 16) {
+  @return ($pixels / $context) * 1rem;
+}
+
+// Calculate em from px
+@function em($pixels, $context: 16) {
+  @return ($pixels / $context) * 1em;
+}
+
+// Get color with opacity
+@function rgba-color($color-name, $opacity: 1) {
+  @if map.has-key($colors, $color-name) {
+    $color: map.get($colors, $color-name);
+    @return rgba($color, $opacity);
+  }
+  @return $color-name;
+}
+
+// Lighten a color by a percentage
+@function color-lighten($color-name, $percentage: 10%) {
+  @if map.has-key($colors, $color-name) {
+    $color: map.get($colors, $color-name);
+    @return lighten($color, $percentage);
+  }
+  @return lighten($color-name, $percentage);
+}
+
+// Darken a color by a percentage
+@function color-darken($color-name, $percentage: 10%) {
+  @if map.has-key($colors, $color-name) {
+    $color: map.get($colors, $color-name);
+    @return darken($color, $percentage);
+  }
+  @return darken($color-name, $percentage);
+}
+
+// Calculate contrast color (black or white) based on background
+@function contrast-color($color) {
+  $red: red($color);
+  $green: green($color);
+  $blue: blue($color);
   
-  // Get the next key in a map
-  @function map-get-next($map, $key) {
-    $keys: map-keys($map);
-    $n: index($keys, $key);
-    
-    @if $n < length($keys) {
-      @return map-get($map, nth($keys, $n + 1));
-    }
-    
-    @return null;
-  }
+  $yiq: (($red * 299) + ($green * 587) + ($blue * 114)) / 1000;
   
-  // Calculate rem from px
-  @function rem($pixels, $context: 16) {
-    @return ($pixels / $context) * 1rem;
+  @if ($yiq >= 128) {
+    @return #000000;
+  } @else {
+    @return #ffffff;
   }
-  
-  // Calculate em from px
-  @function em($pixels, $context: 16) {
-    @return ($pixels / $context) * 1em;
+}
+
+// Get a breakpoint value
+@function breakpoint($breakpoint-name) {
+  @if map.has-key($breakpoints, $breakpoint-name) {
+    @return map.get($breakpoints, $breakpoint-name);
+  } @else {
+    @error "Unknown breakpoint: #{$breakpoint-name}.";
   }
-  
-  // Get color with opacity
-  @function rgba-color($color-name, $opacity: 1) {
-    @if map-has-key($colors, $color-name) {
-      $color: map-get($colors, $color-name);
-      @return rgba($color, $opacity);
-    }
-    @return $color-name;
-  }
-  
-  // Lighten a color by a percentage
-  @function color-lighten($color-name, $percentage: 10%) {
-    @if map-has-key($colors, $color-name) {
-      $color: map-get($colors, $color-name);
-      @return lighten($color, $percentage);
-    }
-    @return lighten($color-name, $percentage);
-  }
-  
-  // Darken a color by a percentage
-  @function color-darken($color-name, $percentage: 10%) {
-    @if map-has-key($colors, $color-name) {
-      $color: map-get($colors, $color-name);
-      @return darken($color, $percentage);
-    }
-    @return darken($color-name, $percentage);
-  }
-  
-  // Calculate contrast color (black or white) based on background
-  @function contrast-color($color) {
-    $red: red($color);
-    $green: green($color);
-    $blue: blue($color);
-    
-    $yiq: (($red * 299) + ($green * 587) + ($blue * 114)) / 1000;
-    
-    @if ($yiq >= 128) {
-      @return #000000;
-    } @else {
-      @return #ffffff;
-    }
-  }
-  
-  // Get a breakpoint value
-  @function breakpoint($breakpoint-name) {
-    @if map-has-key($breakpoints, $breakpoint-name) {
-      @return map-get($breakpoints, $breakpoint-name);
-    } @else {
-      @error "Unknown breakpoint: #{$breakpoint-name}.";
-    }
-  }
+}
