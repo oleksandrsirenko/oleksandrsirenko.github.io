@@ -1,6 +1,7 @@
 /* File: src/styles/utils/_responsive-media.scss */
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
+@use 'sass:map';
 
 // Image aspect ratio container
 .aspect-ratio {
@@ -153,7 +154,7 @@
 
 // Lazy loading image placeholder
 .lazy-placeholder {
-  background-color: rgba(map-get($colors, 'text'), 0.1);
+  background-color: rgba(map.get($colors, 'text'), 0.1);
   position: relative;
   overflow: hidden;
   

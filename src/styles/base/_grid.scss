@@ -1,21 +1,23 @@
 /* File: src/styles/base/_grid.scss */
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'sass:map';
+@use 'sass:math';
 
 // Responsive grid system
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: map-get($spacing, 'md');
+  gap: map.get($spacing, 'md');
   
   @each $breakpoint, $value in $breakpoints {
     @include breakpoint($breakpoint) {
       &.#{$breakpoint}-gap-none { gap: 0; }
-      &.#{$breakpoint}-gap-xs { gap: map-get($spacing, 'xs'); }
-      &.#{$breakpoint}-gap-sm { gap: map-get($spacing, 'sm'); }
-      &.#{$breakpoint}-gap-md { gap: map-get($spacing, 'md'); }
-      &.#{$breakpoint}-gap-lg { gap: map-get($spacing, 'lg'); }
-      &.#{$breakpoint}-gap-xl { gap: map-get($spacing, 'xl'); }
+      &.#{$breakpoint}-gap-xs { gap: map.get($spacing, 'xs'); }
+      &.#{$breakpoint}-gap-sm { gap: map.get($spacing, 'sm'); }
+      &.#{$breakpoint}-gap-md { gap: map.get($spacing, 'md'); }
+      &.#{$breakpoint}-gap-lg { gap: map.get($spacing, 'lg'); }
+      &.#{$breakpoint}-gap-xl { gap: map.get($spacing, 'xl'); }
     }
   }
 }
@@ -60,10 +62,10 @@
 .flex-grid {
   display: flex;
   flex-wrap: wrap;
-  margin: -#{map-get($spacing, 'sm')};
+  margin: -#{map.get($spacing, 'sm')};
   
   > * {
-    padding: map-get($spacing, 'sm');
+    padding: map.get($spacing, 'sm');
   }
   
   &.no-gutters {
@@ -85,8 +87,8 @@
   @include breakpoint($breakpoint) {
     @for $i from 1 through 12 {
       .#{$breakpoint}\:flex-col-#{$i} {
-        flex: 0 0 percentage($i / 12);
-        max-width: percentage($i / 12);
+        flex: 0 0 math.percentage(math.div($i, 12));
+        max-width: math.percentage(math.div($i, 12));
       }
     }
   }
@@ -135,7 +137,7 @@
 }
 
 // Nested grid mixin for component-specific grids
-@mixin nested-grid($columns: 12, $gap: map-get($spacing, 'md')) {
+@mixin nested-grid($columns: 12, $gap: map.get($spacing, 'md')) {
   display: grid;
   grid-template-columns: repeat($columns, 1fr);
   gap: $gap;

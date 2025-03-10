@@ -1,6 +1,8 @@
 /* File: src/styles/utils/_responsive-typography.scss */
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
+@use '../base/responsive' as responsive;
+@use 'sass:map';
 
 // Responsive font size utilities
 @each $breakpoint, $breakpoint-value in $breakpoints {
@@ -86,27 +88,27 @@
 
 // Fluid typography for headings
 h1 {
-  @include fluid-type(320px, 1200px, map-get($font-sizes, '3xl'), map-get($font-sizes, '6xl'));
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, '3xl'), map.get($font-sizes, '6xl'));
 }
 
 h2 {
-  @include fluid-type(320px, 1200px, map-get($font-sizes, '2xl'), map-get($font-sizes, '4xl'));
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, '2xl'), map.get($font-sizes, '4xl'));
 }
 
 h3 {
-  @include fluid-type(320px, 1200px, map-get($font-sizes, 'xl'), map-get($font-sizes, '3xl'));
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, 'xl'), map.get($font-sizes, '3xl'));
 }
 
 h4 {
-  @include fluid-type(320px, 1200px, map-get($font-sizes, 'lg'), map-get($font-sizes, '2xl'));
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, 'lg'), map.get($font-sizes, '2xl'));
 }
 
 h5 {
-  @include fluid-type(320px, 1200px, map-get($font-sizes, 'base'), map-get($font-sizes, 'xl'));
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, 'base'), map.get($font-sizes, 'xl'));
 }
 
 h6 {
-  @include fluid-type(320px, 1200px, map-get($font-sizes, 'sm'), map-get($font-sizes, 'lg'));
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, 'sm'), map.get($font-sizes, 'lg'));
 }
 
 // Line clamp utilities for text truncation

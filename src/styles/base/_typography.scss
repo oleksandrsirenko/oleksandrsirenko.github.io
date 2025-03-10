@@ -1,101 +1,107 @@
 /* File: src/styles/base/_typography.scss */
 @use 'variables' as *;
 @use 'mixins' as *;
+@use 'responsive' as responsive;
+@use 'sass:map';
 
+// Base typography
 body {
-  font-family: map-get($fonts, 'primary');
-  @include font-size('base');
-  @include color('text');
+  font-family: map.get($fonts, 'primary');
+  font-size: map.get($font-sizes, 'base');
+  line-height: 1.5;
+  color: map.get($colors, 'text');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+// Headings
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: map-get($spacing, 'md');
-  @include color('text-light');
-  font-weight: map-get($font-weights, 'bold');
+  margin-top: 0;
+  margin-bottom: map.get($spacing, 'md');
+  font-weight: map.get($font-weights, 'bold');
   line-height: 1.2;
+  color: map.get($colors, 'text-light');
 }
 
+// Apply fluid typography to headings
 h1 {
-  @include font-size('5xl');
-  letter-spacing: -0.025em;
-  
-  @include breakpoint('md') {
-    @include font-size('6xl');
-  }
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, '3xl'), map.get($font-sizes, '6xl'));
 }
 
 h2 {
-  @include font-size('3xl');
-  
-  @include breakpoint('md') {
-    @include font-size('4xl');
-  }
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, '2xl'), map.get($font-sizes, '4xl'));
 }
 
 h3 {
-  @include font-size('2xl');
-  
-  @include breakpoint('md') {
-    @include font-size('3xl');
-  }
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, 'xl'), map.get($font-sizes, '3xl'));
 }
 
 h4 {
-  @include font-size('xl');
-  
-  @include breakpoint('md') {
-    @include font-size('2xl');
-  }
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, 'lg'), map.get($font-sizes, '2xl'));
 }
 
 h5 {
-  @include font-size('lg');
-  
-  @include breakpoint('md') {
-    @include font-size('xl');
-  }
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, 'base'), map.get($font-sizes, 'xl'));
 }
 
 h6 {
-  @include font-size('base');
+  @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, 'sm'), map.get($font-sizes, 'lg'));
+}
+
+// Links
+a {
+  color: map.get($colors, 'secondary');
+  text-decoration: none;
+  transition: color 0.3s ease;
   
-  @include breakpoint('md') {
-    @include font-size('lg');
+  &:hover {
+    color: rgba(map.get($colors, 'secondary'), 0.8);
+    text-decoration: underline;
   }
 }
 
+// Paragraphs
 p {
-  margin-bottom: map-get($spacing, 'md');
-  @include font-size('base');
+  margin-top: 0;
+  margin-bottom: map.get($spacing, 'md');
   
   &:last-child {
     margin-bottom: 0;
   }
 }
 
-a {
-  @include color('secondary');
-  @include transition;
+// Lists
+ul, ol {
+  margin-top: 0;
+  margin-bottom: map.get($spacing, 'md');
+  padding-left: map.get($spacing, 'lg');
   
-  &:hover {
-    text-decoration: underline;
-  }
-  
-  &:focus {
-    @include focus-ring;
+  li {
+    margin-bottom: map.get($spacing, 'xs');
   }
 }
 
-.small-text {
-  @include font-size('sm');
+// Small text
+small, .text-small {
+  font-size: map.get($font-sizes, 'sm');
 }
 
-.large-text {
-  @include font-size('lg');
+// Large text
+.text-lg {
+  font-size: map.get($font-sizes, 'lg');
 }
 
-.mono {
-  font-family: map-get($fonts, 'mono');
+.text-xl {
+  font-size: map.get($font-sizes, 'xl');
+}
+
+.text-2xl {
+  font-size: map.get($font-sizes, '2xl');
+}
+
+// Text alignment
+.text-left {
+  text-align: left;
 }
 
 .text-center {
@@ -106,20 +112,66 @@ a {
   text-align: right;
 }
 
-.text-left {
-  text-align: left;
+// Font weights
+.font-light {
+  font-weight: map.get($font-weights, 'light');
+}
+
+.font-normal {
+  font-weight: map.get($font-weights, 'regular');
+}
+
+.font-medium {
+  font-weight: map.get($font-weights, 'medium');
+}
+
+.font-semibold {
+  font-weight: map.get($font-weights, 'semibold');
+}
+
+.font-bold {
+  font-weight: map.get($font-weights, 'bold');
 }
 
 // Text colors
-@each $name, $color in $colors {
-  .text-#{$name} {
-    @include color($name);
-  }
+.text-primary {
+  color: map.get($colors, 'primary');
 }
 
-// Font weights
-@each $name, $weight in $font-weights {
-  .font-#{$name} {
-    font-weight: $weight;
-  }
+.text-secondary {
+  color: map.get($colors, 'secondary');
+}
+
+.text-light {
+  color: map.get($colors, 'text-light');
+}
+
+.text-muted {
+  color: rgba(map.get($colors, 'text'), 0.7);
+}
+
+// Monospaced text
+.mono {
+  font-family: map.get($fonts, 'mono');
+}
+
+// Helper classes
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
