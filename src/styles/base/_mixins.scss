@@ -1,15 +1,28 @@
 /* File: src/styles/base/_mixins.scss */
 @use "variables" as *;
+@use "sass:map";
 
 // Media Queries
-@mixin breakpoint($point) {
-  @if map-has-key($breakpoints, $point) {
-    @media (min-width: map-get($breakpoints, $point)) {
-      @content;
+@mixin breakpoint($point, $direction: 'min') {
+  @if $direction == 'max' {
+    @if map.has-key($breakpoints, $point) {
+      @media (max-width: (map.get($breakpoints, $point) - 1px)) {
+        @content;
+      }
+    } @else {
+      @media (max-width: $point) {
+        @content;
+      }
     }
   } @else {
-    @media (min-width: $point) {
-      @content;
+    @if map.has-key($breakpoints, $point) {
+      @media (min-width: map.get($breakpoints, $point)) {
+        @content;
+      }
+    } @else {
+      @media (min-width: $point) {
+        @content;
+      }
     }
   }
 }
@@ -24,7 +37,7 @@
 }
 
 // Grid utilities
-@mixin grid($columns: 1, $gap: map-get($spacing, 'md')) {
+@mixin grid($columns: 1, $gap: map.get($spacing, 'md')) {
   display: grid;
   grid-template-columns: repeat($columns, 1fr);
   gap: $gap;
@@ -32,8 +45,8 @@
 
 // Typography
 @mixin font-size($size, $line-height: 1.5) {
-  @if map-has-key($font-sizes, $size) {
-    font-size: map-get($font-sizes, $size);
+  @if map.has-key($font-sizes, $size) {
+    font-size: map.get($font-sizes, $size);
   } @else {
     font-size: $size;
   }
@@ -41,12 +54,12 @@
 }
 
 // Transitions
-@mixin transition($property: all, $speed: map-get($transition-speed, 'normal'), $ease: $transition-ease) {
+@mixin transition($property: all, $speed: map.get($transition-speed, 'normal'), $ease: $transition-ease) {
   transition: $property $speed $ease;
 }
 
 // Container
-@mixin container($max-width: 1200px, $padding: map-get($spacing, 'md')) {
+@mixin container($max-width: 1200px, $padding: map.get($spacing, 'md')) {
   width: 100%;
   max-width: $max-width;
   margin-left: auto;
@@ -84,16 +97,16 @@
 
 // Color utilities
 @mixin color($color-name, $opacity: 1) {
-  @if map-has-key($colors, $color-name) {
-    color: rgba(map-get($colors, $color-name), $opacity);
+  @if map.has-key($colors, $color-name) {
+    color: rgba(map.get($colors, $color-name), $opacity);
   } @else {
     color: $color-name;
   }
 }
 
 @mixin bg-color($color-name, $opacity: 1) {
-  @if map-has-key($colors, $color-name) {
-    background-color: rgba(map-get($colors, $color-name), $opacity);
+  @if map.has-key($colors, $color-name) {
+    background-color: rgba(map.get($colors, $color-name), $opacity);
   } @else {
     background-color: $color-name;
   }
@@ -101,8 +114,8 @@
 
 // Focus styles
 @mixin focus-ring($color: 'secondary', $offset: 2px) {
-  @if map-has-key($colors, $color) {
-    $focus-color: map-get($colors, $color);
+  @if map.has-key($colors, $color) {
+    $focus-color: map.get($colors, $color);
     &:focus-visible {
       outline: 2px solid $focus-color;
       outline-offset: $offset;
