@@ -1,6 +1,7 @@
 /* File: src/styles/utils/_responsive-spacing.scss */
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
+@use 'sass:map';
 
 // Generate responsive spacing utilities for all breakpoints
 @each $breakpoint, $breakpoint-value in $breakpoints {
