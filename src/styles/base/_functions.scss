@@ -1,23 +1,24 @@
 /* File: src/styles/base/_functions.scss */
 @use 'sass:map';
+@use 'sass:math';
 @use 'variables' as *;
 
 // Remove the unit from a value
 @function strip-unit($value) {
   @if type-of($value) == 'number' and not unitless($value) {
-    @return $value / ($value * 0 + 1);
+    @return math.div($value, ($value * 0 + 1));
   }
   @return $value;
 }
 
 // Calculate rem from px
 @function rem($pixels, $context: 16) {
-  @return ($pixels / $context) * 1rem;
+  @return math.div($pixels, $context) * 1rem;
 }
 
 // Calculate em from px
 @function em($pixels, $context: 16) {
-  @return ($pixels / $context) * 1em;
+  @return math.div($pixels, $context) * 1em;
 }
 
 // Get color with opacity
@@ -53,7 +54,7 @@
   $green: green($color);
   $blue: blue($color);
   
-  $yiq: (($red * 299) + ($green * 587) + ($blue * 114)) / 1000;
+  $yiq: math.div(($red * 299) + ($green * 587) + ($blue * 114), 1000);
   
   @if ($yiq >= 128) {
     @return #000000;

@@ -1,92 +1,29 @@
-/* File: src/styles/utils/_responsive-typography.scss */
-@use '../base/variables' as *;
-@use '../base/mixins' as *;
-@use '../base/responsive' as responsive;
+/* File: src/styles/base/_typography.scss */
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'responsive' as responsive;
 @use 'sass:map';
 
-// Responsive font size utilities
-@each $breakpoint, $breakpoint-value in $breakpoints {
-  @include breakpoint($breakpoint) {
-    @each $size-name, $size-value in $font-sizes {
-      .#{$breakpoint}\:text-#{$size-name} {
-        font-size: $size-value !important;
-      }
-    }
-    
-    // Responsive font weights
-    @each $weight-name, $weight-value in $font-weights {
-      .#{$breakpoint}\:font-#{$weight-name} {
-        font-weight: $weight-value !important;
-      }
-    }
-    
-    // Responsive text alignment
-    .#{$breakpoint}\:text-left {
-      text-align: left !important;
-    }
-    
-    .#{$breakpoint}\:text-center {
-      text-align: center !important;
-    }
-    
-    .#{$breakpoint}\:text-right {
-      text-align: right !important;
-    }
-    
-    .#{$breakpoint}\:text-justify {
-      text-align: justify !important;
-    }
-    
-    // Responsive text transforms
-    .#{$breakpoint}\:text-lowercase {
-      text-transform: lowercase !important;
-    }
-    
-    .#{$breakpoint}\:text-uppercase {
-      text-transform: uppercase !important;
-    }
-    
-    .#{$breakpoint}\:text-capitalize {
-      text-transform: capitalize !important;
-    }
-    
-    // Responsive text wrapping
-    .#{$breakpoint}\:text-wrap {
-      white-space: normal !important;
-    }
-    
-    .#{$breakpoint}\:text-nowrap {
-      white-space: nowrap !important;
-    }
-    
-    // Responsive line heights
-    .#{$breakpoint}\:leading-none {
-      line-height: 1 !important;
-    }
-    
-    .#{$breakpoint}\:leading-tight {
-      line-height: 1.25 !important;
-    }
-    
-    .#{$breakpoint}\:leading-snug {
-      line-height: 1.375 !important;
-    }
-    
-    .#{$breakpoint}\:leading-normal {
-      line-height: 1.5 !important;
-    }
-    
-    .#{$breakpoint}\:leading-relaxed {
-      line-height: 1.625 !important;
-    }
-    
-    .#{$breakpoint}\:leading-loose {
-      line-height: 2 !important;
-    }
-  }
+// Base typography
+body {
+  font-family: map.get($fonts, 'primary');
+  font-size: map.get($font-sizes, 'base');
+  line-height: 1.5;
+  color: map.get($colors, 'text');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-// Fluid typography for headings
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: map.get($spacing, 'md');
+  font-weight: map.get($font-weights, 'bold');
+  line-height: 1.2;
+  color: map.get($colors, 'text-light');
+}
+
+// Apply fluid typography to headings
 h1 {
   @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, '3xl'), map.get($font-sizes, '6xl'));
 }
@@ -111,24 +48,130 @@ h6 {
   @include responsive.fluid-type(320px, 1200px, map.get($font-sizes, 'sm'), map.get($font-sizes, 'lg'));
 }
 
-// Line clamp utilities for text truncation
-@for $i from 1 through 5 {
-  .line-clamp-#{$i} {
-    display: -webkit-box;
-    -webkit-line-clamp: $i;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+// Links
+a {
+  color: map.get($colors, 'secondary');
+  text-decoration: none;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: rgba(map.get($colors, 'secondary'), 0.8);
+    text-decoration: underline;
   }
 }
 
-// Helper classes for text overflow
+// Paragraphs
+p {
+  margin-top: 0;
+  margin-bottom: map.get($spacing, 'md');
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Lists
+ul, ol {
+  margin-top: 0;
+  margin-bottom: map.get($spacing, 'md');
+  padding-left: map.get($spacing, 'lg');
+  
+  li {
+    margin-bottom: map.get($spacing, 'xs');
+  }
+}
+
+// Small text
+small, .text-small {
+  font-size: map.get($font-sizes, 'sm');
+}
+
+// Large text
+.text-lg {
+  font-size: map.get($font-sizes, 'lg');
+}
+
+.text-xl {
+  font-size: map.get($font-sizes, 'xl');
+}
+
+.text-2xl {
+  font-size: map.get($font-sizes, '2xl');
+}
+
+// Text alignment
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Font weights
+.font-light {
+  font-weight: map.get($font-weights, 'light');
+}
+
+.font-normal {
+  font-weight: map.get($font-weights, 'regular');
+}
+
+.font-medium {
+  font-weight: map.get($font-weights, 'medium');
+}
+
+.font-semibold {
+  font-weight: map.get($font-weights, 'semibold');
+}
+
+.font-bold {
+  font-weight: map.get($font-weights, 'bold');
+}
+
+// Text colors
+.text-primary {
+  color: map.get($colors, 'primary');
+}
+
+.text-secondary {
+  color: map.get($colors, 'secondary');
+}
+
+.text-light {
+  color: map.get($colors, 'text-light');
+}
+
+.text-muted {
+  color: rgba(map.get($colors, 'text'), 0.7);
+}
+
+// Monospaced text
+.mono {
+  font-family: map.get($fonts, 'mono');
+}
+
+// Helper classes
 .text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.text-break {
-  word-break: break-word;
-  overflow-wrap: break-word;
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
