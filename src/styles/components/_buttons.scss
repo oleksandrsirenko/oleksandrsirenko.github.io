@@ -1,15 +1,16 @@
 /* File: src/styles/components/_buttons.scss */
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
+@use 'sass:map';
 
 .btn {
   display: inline-block;
-  padding: map-get($spacing, 'sm') map-get($spacing, 'lg');
-  font-weight: map-get($font-weights, 'medium');
+  padding: map.get($spacing, 'sm') map.get($spacing, 'lg');
+  font-weight: map.get($font-weights, 'medium');
   text-align: center;
   border: 1px solid transparent;
   @include font-size('base');
-  border-radius: map-get($border-radius, 'md');
+  border-radius: map.get($border-radius, 'md');
   @include transition;
   cursor: pointer;
   
@@ -35,7 +36,7 @@
   // Secondary/Outline button
   &-outline {
     background-color: transparent;
-    border-color: map-get($colors, 'secondary');
+    border-color: map.get($colors, 'secondary');
     @include color('secondary');
     
     &:hover {
@@ -46,7 +47,7 @@
   // Text button (no background)
   &-text {
     background-color: transparent;
-    padding: map-get($spacing, 'xs') map-get($spacing, 'sm');
+    padding: map.get($spacing, 'xs') map.get($spacing, 'sm');
     @include color('secondary');
     
     &:hover {
@@ -62,7 +63,7 @@
     width: 2.5rem;
     height: 2.5rem;
     padding: 0;
-    border-radius: map-get($border-radius, 'full');
+    border-radius: map.get($border-radius, 'full');
     
     svg {
       width: 1.25rem;
@@ -72,12 +73,12 @@
   
   // Button sizes
   &-sm {
-    padding: map-get($spacing, 'xs') map-get($spacing, 'md');
+    padding: map.get($spacing, 'xs') map.get($spacing, 'md');
     @include font-size('sm');
   }
   
   &-lg {
-    padding: map-get($spacing, 'md') map-get($spacing, 'xl');
+    padding: map.get($spacing, 'md') map.get($spacing, 'xl');
     @include font-size('lg');
   }
 }
@@ -90,13 +91,13 @@
     border-radius: 0;
     
     &:first-child {
-      border-top-left-radius: map-get($border-radius, 'md');
-      border-bottom-left-radius: map-get($border-radius, 'md');
+      border-top-left-radius: map.get($border-radius, 'md');
+      border-bottom-left-radius: map.get($border-radius, 'md');
     }
     
     &:last-child {
-      border-top-right-radius: map-get($border-radius, 'md');
-      border-bottom-right-radius: map-get($border-radius, 'md');
+      border-top-right-radius: map.get($border-radius, 'md');
+      border-bottom-right-radius: map.get($border-radius, 'md');
     }
     
     &:not(:last-child) {

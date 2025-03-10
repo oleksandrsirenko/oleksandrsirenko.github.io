@@ -1,13 +1,14 @@
 /* File: src/styles/components/_hero.scss */
 @use '../base/variables' as *;
 @use '../base/mixins' as *;
+@use 'sass:map';
 
 .hero {
   min-height: calc(100vh - 80px); // Account for header height
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: map-get($spacing, '3xl') 0;
+  padding: map.get($spacing, '3xl') 0;
   position: relative;
   
   // Ensure minimum height on smaller screens
@@ -17,7 +18,7 @@
   
   // For larger screens, add extra top padding for better vertical centering
   @include breakpoint('xl') {
-    padding-top: map-get($spacing, '4xl');
+    padding-top: map.get($spacing, '4xl');
   }
   
   // Background decorative elements
@@ -34,7 +35,7 @@
     right: 0;
     width: 50%;
     height: 100%;
-    background-image: radial-gradient(rgba(map-get($colors, 'secondary'), 0.1) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(map.get($colors, 'secondary'), 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
     opacity: 0.2;
     z-index: -1;
@@ -53,9 +54,9 @@
   
   // Pre-title (small text above the main heading)
   &__pre-title {
-    font-family: map-get($fonts, 'mono');
-    color: map-get($colors, 'secondary');
-    margin-bottom: map-get($spacing, 'md');
+    font-family: map.get($fonts, 'mono');
+    color: map.get($colors, 'secondary');
+    margin-bottom: map.get($spacing, 'md');
     display: block;
     @include font-size('base');
     
@@ -68,9 +69,9 @@
   &__title {
     @include font-size('4xl');
     line-height: 1.1;
-    margin-bottom: map-get($spacing, 'sm');
-    font-weight: map-get($font-weights, 'bold');
-    color: map-get($colors, 'text-light');
+    margin-bottom: map.get($spacing, 'sm');
+    font-weight: map.get($font-weights, 'bold');
+    color: map.get($colors, 'text-light');
     
     @include breakpoint('md') {
       @include font-size('5xl');
@@ -82,9 +83,9 @@
     
     &--highlight {
       display: block;
-      color: rgba(map-get($colors, 'text-light'), 0.8);
+      color: rgba(map.get($colors, 'text-light'), 0.8);
       @include font-size('3xl');
-      margin-top: map-get($spacing, 'xs');
+      margin-top: map.get($spacing, 'xs');
       
       @include breakpoint('md') {
         @include font-size('4xl');
@@ -99,17 +100,17 @@
   // Description text
   &__description {
     max-width: 540px;
-    margin-top: map-get($spacing, 'lg');
-    margin-bottom: map-get($spacing, 'xl');
+    margin-top: map.get($spacing, 'lg');
+    margin-bottom: map.get($spacing, 'xl');
     @include font-size('lg');
-    color: map-get($colors, 'text');
+    color: map.get($colors, 'text');
     
     @include breakpoint('md') {
       @include font-size('xl');
     }
     
     p + p {
-      margin-top: map-get($spacing, 'md');
+      margin-top: map.get($spacing, 'md');
     }
   }
   
@@ -117,21 +118,21 @@
   &__cta {
     display: flex;
     flex-wrap: wrap;
-    gap: map-get($spacing, 'md');
-    margin-top: map-get($spacing, 'xl');
+    gap: map.get($spacing, 'md');
+    margin-top: map.get($spacing, 'xl');
   }
   
   // Scroll down indicator
   &__scroll-indicator {
     position: absolute;
-    bottom: map-get($spacing, 'xl');
+    bottom: map.get($spacing, 'xl');
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: map-get($colors, 'text');
-    font-family: map-get($fonts, 'mono');
+    color: map.get($colors, 'text');
+    font-family: map.get($fonts, 'mono');
     @include font-size('xs');
     transition: opacity 0.3s ease;
     
@@ -146,8 +147,8 @@
       display: block;
       width: 1px;
       height: 50px;
-      background-color: map-get($colors, 'secondary');
-      margin-top: map-get($spacing, 'sm');
+      background-color: map.get($colors, 'secondary');
+      margin-top: map.get($spacing, 'sm');
       animation: scrollDown 1.5s infinite;
     }
   }
@@ -155,7 +156,7 @@
   // Float effect for image
   &__image {
     position: relative;
-    border-radius: map-get($border-radius, 'md');
+    border-radius: map.get($border-radius, 'md');
     overflow: hidden;
     box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.3);
     
@@ -166,8 +167,8 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border: 2px solid map-get($colors, 'secondary');
-      border-radius: map-get($border-radius, 'md');
+      border: 2px solid map.get($colors, 'secondary');
+      border-radius: map.get($border-radius, 'md');
       z-index: -1;
       transition: transform 0.3s ease;
     }
@@ -180,7 +181,7 @@
       width: 100%;
       height: auto;
       display: block;
-      border-radius: map-get($border-radius, 'md');
+      border-radius: map.get($border-radius, 'md');
       position: relative;
       z-index: 1;
     }
@@ -191,7 +192,7 @@
     &__content {
       display: grid;
       grid-template-columns: 3fr 2fr;
-      gap: map-get($spacing, 'xl');
+      gap: map.get($spacing, 'xl');
       align-items: center;
     }
     
@@ -210,7 +211,7 @@
   // Mobile layout
   @include breakpoint('max', 'md') {
     &__media {
-      margin-top: map-get($spacing, 'xl');
+      margin-top: map.get($spacing, 'xl');
     }
   }
 }
@@ -235,7 +236,7 @@
 .circle-decoration {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(map-get($colors, 'secondary'), 0.2) 0%, rgba(map-get($colors, 'secondary'), 0) 70%);
+  background: radial-gradient(circle, rgba(map.get($colors, 'secondary'), 0.2) 0%, rgba(map.get($colors, 'secondary'), 0) 70%);
   filter: blur(60px);
   z-index: -1;
   opacity: 0.5;
