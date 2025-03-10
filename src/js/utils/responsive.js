@@ -11,7 +11,7 @@ const breakpoints = {
   md: 768,
   lg: 1024,
   xl: 1280,
-  '2xl': 1536
+  xxl: 1536  // Changed from '2xl' to 'xxl'
 };
 
 /**
